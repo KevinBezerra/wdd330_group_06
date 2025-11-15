@@ -261,3 +261,20 @@ footer {
   font-size: var(--small-font);
   padding: 1em;
 }
+
+.cart a{
+  position :relative;
+}
+
+.cart-superscript {
+  position: absolute;
+  top: -5px;
+  right: -5px;
+  background-color: red;
+  color: white;
+  font-size: 0.8rem;
+  font-weight: bold;
+  padding: 2px 6px;
+  border-radius: 50%;
+  vertical-align: top;
+}

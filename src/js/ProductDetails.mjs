@@ -19,9 +19,14 @@ export default class ProductDetails {
     }
 
     addProductToCart() {
-        const localStorage = getLocalStorage("so-cart") || [];
-        localStorage.push(this.product)
-        setLocalStorage("so-cart", localStorage);
+        let cartItems = getLocalStorage("so-cart");
+
+        if (!Array.isArray(cartItems)) {
+            cartItems = [];
+        }
+
+        cartItems.push(this.product);
+        setLocalStorage("so-cart", cartItems);
     }
 
     async renderProductDetails() {
