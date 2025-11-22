@@ -262,19 +262,19 @@ footer {
   padding: 1em;
 }
 
-.cart a{
-  position :relative;
+.cart {
+  position: relative;
 }
 
-.cart-superscript {
+.cart-count {
   position: absolute;
   top: -5px;
   right: -5px;
-  background-color: red;
+  background-color: var(--tertiary-color);
   color: white;
-  font-size: 0.8rem;
+  font-size: 0.7rem;
   font-weight: bold;
   padding: 2px 6px;
   border-radius: 50%;
-  vertical-align: top;
+  z-index: 10;
 }

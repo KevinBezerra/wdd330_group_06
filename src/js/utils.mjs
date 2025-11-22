@@ -38,21 +38,22 @@ export function renderListWithTemplate(templateFn, parentElement, list, position
   parentElement.insertAdjacentHTML(position, productsTemplate.join(''))
 }
 
-export function renderCartSuperscript() {
-  const cartItems = getLocalStorage("so-cart") || [];
-  const totalItems = cartItems.length;
-  const cartLink = qs(".cart a");
+export function updateCartCount() {
+  const cartItems = getLocalStorage("so-cart");
+  const count = cartItems ? cartItems.length : 0;
+  const cartElement = document.querySelector(".cart");
 
-  if (cartLink) {
-    const existingSuperscript = qs(".cart-superscript", cartLink);
-    if (existingSuperscript) {
-      existingSuperscript.remove();
+  if (cartElement) {
+    let countElement = cartElement.querySelector(".cart-count");
+
+    if (!countElement) {
+      countElement = document.createElement("span");
+      countElement.classList.add("cart-count");
+      cartElement.appendChild(countElement);
     }
-    if (totalItems > 0 ) {
-      const superscript = document.createElement("span");
-      superscript.classList.add("cart-superscript");
-      superscript.textContent = totalItems;
-      cartLink.appendChild(superscript);
-    }
+
+    countElement.innerText = count;
+    
+    countElement.style.display = count > 0 ? "block" : "none";
   }
 }
